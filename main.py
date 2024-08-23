@@ -1,6 +1,7 @@
 import os
 from Auto import Auto
 from Cliente import Cliente
+from Compra import Compra
 
 carros = []
 clientes = []
@@ -26,7 +27,38 @@ def registrar_Cliente():
     print(f"El Cliente {nombre} se registro correctamente.")
 
 def realizar_Compra():
-    pass
+    print(clientes)
+    nit_cliente = input("Ingrese el numero de NIT del Cliente: ")
+    cliente = None
+
+    for buscando_nit in clientes:
+        if buscando_nit.nit == nit_cliente:
+            cliente == buscando_nit
+
+        if not cliente:
+            print("NIT de Cliente no encontrado")
+        
+    compra_nueva = Compra(cliente)
+    while True:
+        print("-----MENU DE COMPRA-----")
+        print("1. Agregar Auto")
+        print("2. Terminar compra y generar factura")
+        try:
+            opcion = int(input("Seleccione una opción: "))
+        except ValueError:
+            print("\nPor favor ingrese un caracter válido...")
+            continue
+        if opcion == 1:
+            print("Agregar auto")
+        
+        elif opcion == 2:
+            print("Terminar Compra y Generar Factura")
+            break
+        
+        else:
+            print("Igrese una opcion válida")
+        input("\n Presione una tecla para continuar")
+
 
 
 def limpiar_consola():
@@ -63,6 +95,7 @@ def Menu():
         
         elif opcion == 3:
             print("\nrealizo compra")
+            realizar_Compra()
         
         elif opcion == 4:
             print("\nreporte de compras")
